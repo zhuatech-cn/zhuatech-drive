@@ -38,3 +38,7 @@
 | `watermarkEnabled` | boolean | 已启用水印 |
 
 接口统一返回 `ApiResponse`；业务冲突使用 HTTP 409，参数错误使用 400，未认证使用 401，无权限使用 403。
+
+## 文档核心 API
+
+`POST/GET /core/drive/documents` 管理受控文档，`POST/GET /core/drive/documents/{id}/versions` 管理不可变版本。管理员通过 `/admin/core/drive/documents/{id}/shares` 创建安全共享，通过 `/archive` 归档文档；访问者使用 `POST /public/drive/shares/{token}/access` 校验密码、期限和下载次数。响应永不包含密码哈希。
