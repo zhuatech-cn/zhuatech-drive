@@ -6,6 +6,9 @@ package cn.zhuatech.drive.controller;import cn.zhuatech.drive.common.ApiResponse
  @GetMapping("/api/core/drive/documents/{id}")ApiResponse<DriveCoreService.Document>detail(@PathVariable Long id){return ApiResponse.ok(service.detail(id));}
  @GetMapping("/api/core/drive/documents/{id}/versions")ApiResponse<List<DriveCoreService.DocumentVersion>>versions(@PathVariable Long id){return ApiResponse.ok(service.versions(id));}
  @PostMapping("/api/core/drive/documents/{id}/versions")ApiResponse<DriveCoreService.DocumentVersion>version(@PathVariable Long id,@Valid@RequestBody DriveCoreService.VersionRequest r){return ApiResponse.ok(service.addVersion(id,r));}
+ @PostMapping("/api/core/drive/documents/{id}/checkout")ApiResponse<DriveCoreService.Document>checkout(@PathVariable Long id,@Valid@RequestBody DriveCoreService.CheckoutRequest r){return ApiResponse.ok(service.checkout(id,r));}
+ @PostMapping("/api/core/drive/documents/{id}/checkin")ApiResponse<DriveCoreService.DocumentVersion>checkin(@PathVariable Long id,@Valid@RequestBody DriveCoreService.VersionRequest r){return ApiResponse.ok(service.checkin(id,r));}
+ @PostMapping("/api/admin/core/drive/documents/{id}/force-unlock")ApiResponse<DriveCoreService.Document>forceUnlock(@PathVariable Long id){return ApiResponse.ok(service.forceUnlock(id));}
  @PostMapping("/api/admin/core/drive/documents/{id}/archive")ApiResponse<DriveCoreService.Document>archive(@PathVariable Long id){return ApiResponse.ok(service.archive(id));}
  @PostMapping("/api/admin/core/drive/documents/{id}/shares")ApiResponse<DriveCoreService.SecureShare>share(@PathVariable Long id,@Valid@RequestBody DriveCoreService.CreateShareRequest r){return ApiResponse.ok(service.createShare(id,r));}
  @PostMapping("/api/public/drive/shares/{token}/access")ApiResponse<DriveCoreService.ShareAccess>access(@PathVariable String token,@Valid@RequestBody DriveCoreService.ShareAccessRequest r){return ApiResponse.ok(service.access(token,r));}

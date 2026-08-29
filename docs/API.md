@@ -42,3 +42,5 @@
 ## 文档核心 API
 
 `POST/GET /core/drive/documents` 管理受控文档，`POST/GET /core/drive/documents/{id}/versions` 管理不可变版本。管理员通过 `/admin/core/drive/documents/{id}/shares` 创建安全共享，通过 `/archive` 归档文档；访问者使用 `POST /public/drive/shares/{token}/access` 校验密码、期限和下载次数。响应永不包含密码哈希。
+
+`POST /core/drive/documents/{id}/checkout` 建立签出锁，`/checkin` 仅允许当前签出人提交新版本并释放锁；管理员可调用 `/admin/core/drive/documents/{id}/force-unlock` 处理异常锁定。
